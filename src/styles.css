@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0c0b0a;
+  --color-foreground: #f3ece3;
+  --color-surface: #161412;
+  --color-elevated: #1d1a17;
+  --color-muted: #9c9388;
+  --color-subtle: #6f675e;
+  --color-accent: #b4232a;
+  --color-accent-fg: #f3ece3;
+  --color-primary: #f3ece3;
+  --color-primary-fg: #0c0b0a;
+  --color-border: rgb(243 236 227 / 12%);
+  --color-ring: #f3ece3;
+
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.35rem, 1.1rem + 0.8vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+  --text-3xl: clamp(2.4rem, 1.4rem + 3.2vw, 4.25rem);
+  --text-4xl: clamp(3rem, 1.6rem + 4.5vw, 6rem);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" on;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+
+  img {
+    outline: 1px solid rgb(243 236 227 / 10%);
+    outline-offset: -1px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-safe-only {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-in-1 {
+  animation-delay: 40ms;
+}
+.rise-in-2 {
+  animation-delay: 120ms;
+}
+.rise-in-3 {
+  animation-delay: 200ms;
+}
+.rise-in-4 {
+  animation-delay: 280ms;
+}
